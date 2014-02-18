@@ -1,0 +1,52 @@
+html, body {
+  height: 100%;
+}
+body {
+  position: relative;
+}
+*, h1, h2, h3, h4, h5, p, a, em {
+  font-family: 'Ubuntu', sans-serif;
+}
+em {
+  text-decoration: none;
+  font-style: normal;
+  color: #E74C3C;
+}
+.navbar a {
+  font-size: 16px;
+  font-weight: 700;
+}
+.navbar a:hover {
+  color: #E74C3C;
+}
+.navbar ul li ul li a {
+  font-size: 16px;
+}
+.navbar {
+  background-color: rgba(51, 51, 51, 0.8);
+  background: rgba(51, 51, 51, 0.8);
+  height: 40px;
+}
+.navbar .navbar-toggle {
+  border-color: #dddddd;
+}
+
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+
+.navbar .navbar-toggle .icon-bar {
+  background-color: #cccccc;
+}
+
+
+
+/*
+TODO: port css to ngToolboxx
+*/
+
+.footer {
+  height: 40px;
+  margin-top: -40px;
+}

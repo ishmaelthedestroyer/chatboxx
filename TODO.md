@@ -8,4 +8,8 @@
 [67 - low] # TODO: ...
 
 
+* public/assets/css/style.css
+[46 - low] TODO: port css to ngToolboxx
+
+
 -- END TASK LIST --

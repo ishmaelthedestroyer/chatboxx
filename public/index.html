@@ -28,7 +28,7 @@
     <link media="screen" rel="stylesheet" href="/assets/vendor/noToolbox/dist/css/noToolbox.css" />
     <script src="/assets/vendor/modernizr/modernizr.js"></script>
   </head>
-  <body>
+  <body data-ng-controller='AppCtrl'>
     <!--[if lt IE 8]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -55,7 +55,8 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/"><img src='/assets/img/logo.png' style='width: 20px; height; 20px;' /></a></li>
-                    <li><a href="#">route 1</a></li>
+                    <li><a class='text-white' href="https://github.com/ishmaelthedestroyer/chatboxx" target="_blank">code</a></li>
+                    <li><a class='text-white' href="#" ng-click='contact($event)'>contact</a></li>
                 </ul>
             </div>
 

@@ -1,0 +1,65 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" ng-click="close()" type="button">&times;</button>
+      <h4 class="modal-title">Contact</h4>
+    </div>
+    <div class="modal-body">
+      <p>Questions, comments, and feedback are greatly appreciated. We'll get back to you as soon as we can.</p>
+      <form ng-submit="send()">
+        <div class="row has-{{statusName}}" style="padding: 0 20px 0 20px;">
+          <label class="control-label" for="name-group">{{promptName}}</label>
+          <div id="name-group" class="input-group">
+            <input class="form-control" ng-model="message.name" ng-disabled="working" type="text" placeholder="name" />
+            <span class="input-group-btn" ng-switch=" " on="validateName()">
+              <button class="btn btn-default" type="button" disabled="disabled" ng-switch-when="empty">
+                <span class="glyphicon glyphicon-user">
+                </span>
+              </button>
+              <button class="btn btn-primary" type="button" disabled="disabled" ng-switch-when="valid">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+              </button>
+              <button class="btn btn-danger" type="button" disabled="disabled" ng-switch-default=" ">
+                <span class="glyphicon glyphicon-remove">
+                </span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="row has-{{statusEmail}}" style="padding: 0 20px 0 20px;">
+          <label class="control-label" for="email-group">{{promptEmail}}</label>
+          <div id="email-group" class="input-group">
+            <input class="form-control" ng-model="message.email" ng-disabled="working" type="text" placeholder="email" />
+            <span class="input-group-btn" ng-switch=" " on="validateEmail()">
+              <button class="btn btn-default" type="button" disabled="disabled" ng-switch-when="empty">
+                <span class="glyphicon glyphicon-envelope">
+                </span>
+              </button>
+              <button class="btn btn-primary" type="button" disabled="disabled" ng-switch-when="valid">
+                <span class="glyphicon glyphicon-ok">
+                </span>
+              </button>
+              <button class="btn btn-danger" type="button" disabled="disabled" ng-switch-default=" ">
+                <span class="glyphicon glyphicon-remove">
+                </span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="row has-{{statusMessage}}" style="padding: 0 20px 0 20px;">
+          <label class="control-label" for="message-group">{{promptMessage}}</label>
+          <div id="message-group" class="form-group">
+            <textarea class="form-control" ng-model="message.message" ng-change="validateMessage()" ng-disabled="working" rows="5" placeholder="message">
+            </textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default pull-left" type="button" ng-click="close()">Cancel</button>
+      <button class="btn btn-default pull-right" ng-show="!validName || !validEmail || !validMessage || working" disabled="true" type="submit">Submit</button>
+      <button class="btn btn-primary pull-right" ng-hide="!validName || !validEmail || !validMessage || working" ng-click="send()" type="submit">Submit</button>
+    </div>
+  </div>
+</div>
