@@ -6,8 +6,10 @@
 **/bower_components/**
 
 # env + ssl files
-./env/**
-./ssl/**
+./config/env/*.*
+./config/env/**
+./config/ssl/*.*
+./config/ssl/**
 !./config/env/README.md
 !./config/ssl/production/README.md
 !./config/ssl/development/README.md
