@@ -6,28 +6,25 @@
 **/bower_components/**
 
 # env + ssl files
-./config/env/*.*
-./config/env/**
-./config/ssl/*.*
-./config/ssl/**
-!./config/env/README.md
-!./config/ssl/production/README.md
-!./config/ssl/development/README.md
+config/env/*.*
+config/env/**
+config/ssl/*.*
+config/ssl/**
+!config/env/README.md
+!config/ssl/production/README.md
+!config/ssl/development/README.md
 
 # logs
-./npm_debug.log
+npm_debug.log
 
 # build artifacts
-./bin/*
+bin/*
 
 # final build
-./dist/**
+dist/**
 
 # deployment artifacts
-./deploy/*
+deploy/*
 
 # os artifacts
 .DS_Store
-
-# ignore tests
-**/test/**
