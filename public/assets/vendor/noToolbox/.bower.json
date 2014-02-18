@@ -1,0 +1,25 @@
+{
+  "name": "noToolbox",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "~3.0.0",
+    "angular": "~1.2.0",
+    "angular-resource": "~1.2.0",
+    "angular-bootstrap": "~0.6.0",
+    "angular-ui-router": "0.2.0",
+    "modernizr": "~2.7.1",
+    "es5-shim": "~2.3.0",
+    "browser-shim": "latest",
+    "noToolbox": "latest"
+  },
+  "homepage": "https://github.com/ishmaelthedestroyer/noToolbox",
+  "_release": "fb32ee6f47",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fb32ee6f47bbcba376b558ca11b89235afc3ed95"
+  },
+  "_source": "git://github.com/ishmaelthedestroyer/noToolbox.git",
+  "_target": "*",
+  "_originalSource": "noToolbox"
+}

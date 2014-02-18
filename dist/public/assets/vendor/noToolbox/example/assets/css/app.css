@@ -1,0 +1,70 @@
+.clear, .clear-10, .clear-20, .clear-40, .clear-50, .clear-100 {
+  clear: both;
+}
+.clear-10 {
+  margin-bottom: 10px;
+}
+.clear-20 {
+  margin-bottom: 20px;
+}
+.clear-40 {
+  margin-bottom: 40px;
+}
+.clear-50 {
+  margin-bottom: 50px;
+}
+.clear-100 {
+  margin-bottom: 100px;
+}
+.header {
+  background-color: #333;
+  width: 100%;
+  height: 200px;
+}
+.text-white {
+  color: #fff;
+}
+.text-center {
+  text-align: center;
+}
+
+
+
+
+.social-media {
+  width: auto;
+  height: 30px;
+  margin-top: 18px;
+  overflow: hidden;
+}
+.social-icons {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 80px;
+  height: auto;
+}
+.social-icons li {
+  float:left;
+  display:inline;
+  list-style:none;
+  margin: 10px 10px 0 0 !important;
+}
+.social-icons li a, a.social-icon {
+  width:28px;
+  height:28px;
+  display:block;
+  background-position:0 0;
+  background-repeat:no-repeat;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+.social-icons li:hover a {
+  background-position:0 -38px;
+}
+.social_facebook {background: url(../img/social/facebook.png) no-repeat;}
+.social_github {background: url(../img/social/github.png) no-repeat;}
+.social_googleplus {background: url(../img/social/googleplus.png) no-repeat;}
+.social_twitter {background: url(../img/social/twitter.png) no-repeat;}

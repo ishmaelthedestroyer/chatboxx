@@ -1,0 +1,64 @@
+{
+  "name": "noSeed",
+  "version": "0.0.0",
+  "homepage": "http://no-seed.herokuapp.com",
+  "description": "Nomads MEAN seed.",
+  "main": "app.js",
+  "repository": "github.com/ishmaelthedestroyer/noSeed",
+  "keywords": [
+    "angular",
+    "seed",
+    "mongo",
+    "redis",
+    "express",
+    "angular",
+    "node"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "author": "ishmaelthedestroyer",
+  "dependencies": {
+    "optimist": "~0.6.0",
+    "q": "~0.9.7",
+    "underscore": "~1.5.1",
+    "cookie": "~0.1.0",
+    "moment": "~2.4.0",
+    "express": "~3.3.4",
+    "socket.io": "~0.9.16",
+    "socket.io-stream": "0.5.0",
+    "redis": "~0.8.6",
+    "redis-url": "~0.2.0",
+    "connect-redis": "~1.4.5",
+    "mongoose": "~3.6.1",
+    "node-uuid": "~1.4.1",
+    "colors": "~0.6.2",
+    "bcrypt": "~0.7.7",
+    "passport": "~0.1.1",
+    "passport-local": "~0.1.6",
+    "aws-sdk": "2.0.0-rc1",
+    "knox-mpu": "0.1.1",
+    "knox": "~0.8.8",
+    "geoip": "~0.5.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-recess": "~0.3.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-coffeelint": "~0.0.6",
+    "grunt-coffeecup": "~0.1.0",
+    "grunt-bump": "~0.0.6",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt-concurrent": "~0.4.2",
+    "grunt-nodemon": "~0.1.2",
+    "grunt-mkdir": "~0.1.1",
+    "grunt-todos": "~0.2.0"
+  }
+}

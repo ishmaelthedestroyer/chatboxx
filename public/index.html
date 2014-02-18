@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html data-ng-controller='noCtrl'>
+  <head>
+    <meta charset="utf-8">
+    <base href="/" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link media="screen" rel="stylesheet" href="/assets/css/app.css" />
+    <link media="screen" rel="stylesheet" href="/assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link media="screen" rel="stylesheet" href="/assets/vendor/noToolbox/dist/css/noToolbox.css" />
+    <script src="/assets/vendor/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="notification-container ng-cloak">
+      <div class="alert alert-dismissable alert-{{notification.type}}" ng-repeat="notification in notifications">
+        <button class="close" type="button" aria-hidden="true" ng-click="removeNotification($index)">
+          &times;
+        </button>
+        {{notification.message}}
+      </div>
+    </div>
+    <div class="loading-container ng-cloak" ng-class="{hidden: queue.length == 0}"></div>
+
+    <nav class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><img src='/assets/img/logo.png' style='width: 20px; height; 20px;' /></a></li>
+                    <li><a href="#">route 1</a></li>
+                </ul>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    account
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu" class="ng-cloak">
+                    <li ng-hide="session.user">
+                      <a href="/login">
+                        login
+                      </a>
+                    </li>
+                    <li class="ng-cloak" ng-hide="session.user">
+                      <a href="/signup">
+                        signup
+                      </a>
+                    </li>
+                    <li class="ng-cloak" ng-hide="!session.user" ng-click="logout($event)">
+                      <a href="/logout">
+                        logout
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="clear-50"></div>
+
+    <div class="full-screen" ui-view>
+      <div class="loading-large"></div>
+    </div>
+
+    <div class="clear-20"></div>
+
+    <script src="/assets/vendor/browser-shim/shim.js"></script>
+    <script src="/assets/vendor/es5-shim/es5-shim.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="/assets/vendor/jquery/jquery.js"></script>
+    <script src="/assets/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/assets/vendor/angular/angular.js"></script>
+    <script src="/assets/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/assets/vendor/angular-resource/angular-resource.js"></script>
+    <script src="/assets/vendor/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="/assets/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="/assets/vendor/noToolbox/dist/js/noToolbox.js"></script>
+    <script src="/assets/js/app.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+  </body>
+</html>

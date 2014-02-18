@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html data-ng-controller='noCtrl'>
+  <head>
+    <meta charset="utf-8">
+    <base href="/" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>noToolbox</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link media="screen" rel="stylesheet" href="../example/assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link media="screen" rel="stylesheet" href="../dist/css/noToolbox.css" />
+    <link media="screen" rel="stylesheet" href="../example/assets/css/app.css" />
+    <script src="../example/assets/vendor/modernizr/modernizr.js"></script>
+  </head>
+  <body data-ng-controller='AppCtrl'>
+    <div class="notification-container ng-cloak">
+      <div class="alert alert-dismissable alert-{{notification.type}}" ng-repeat="notification in notifications">
+        <button class="close" type="button" aria-hidden="true" ng-click="removeNotification($index)">
+          &times;
+        </button>
+        {{notification.message}}
+      </div>
+    </div>
+    <div class="loading-container ng-cloak" ng-class="{hidden: queue.length == 0}"></div>
+    <div class='container header'>
+      <div class='row'>
+        <div class='clear-50'></div>
+        <h1 class='text-white text-center'>
+        noToolbox
+        <br />
+        <span style='font-size: 18pt;'>Angular Toolbox, by Nomads</span>
+          <div class='clear'></div>
+          <span>
+          <a href='http://ishmaelthedestroyer.com' target='_blank' style='display: inline-block;'>
+            <small>ishmaelthedestroyer</small>
+          </a>
+          <ul class='social-icons' style='display: inline-block;'>
+            <li>
+              <a href='http://twitter.com/IshmaelsAlive' target='_blank' class='social_twitter'></a>
+            </li>
+            <li>
+              <a href='http://github.com/ishmaelthedestroyer' target='_blank' class='social_github'></a>
+            </li>
+          </ul>
+          </span>
+        </h1>
+      </div>
+    </div>
+
+    <div class='clear-50'></div>
+
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+
+    <div class='clear-50'></div>
+
+    <![endif]-->
+
+
+    <div class='container'>
+      <div class='row'>
+        <p class='lead'>About</p>
+
+        <p>This is a toolbox for AngularJs apps. It includes a significant amount of services, directives, filters, and controllers to ease the process of constructing small to large scale apps with pre-built functionality. Features range from push notifications to logging, as well as a few libraries ported from Node.</p>
+
+        <p>The source code can be found at <a href='http://github.com/ishmaelthedestroyer/noToolbox' target='_blank'>http://github.com/ishmaelthedestroyer/noToolbox</a>
+        <br />
+        The demo can be found at <a href='http://no-toolbox.herokuapp.com' target='_blank'>http://no-toolbox.herokuapp.com</a>
+        <br /><br />
+        The compiled source code (Javascript) can be found at <a href='https://github.com/ishmaelthedestroyer/noToolbox/blob/master/dist/js/noToolbox.js' target='_blank'>https://github.com/ishmaelthedestroyer/noToolbox/blob/master/dist/js/noToolbox.js</a></p>
+
+        <div class='clear-50'></div>
+
+        <p class='lead'>TODO</p>
+
+        <ul>
+          <li>
+            <p>Documentation in the works.</p>
+          </li>
+          <li>
+            <p>Demos.</p>
+          </li>
+        </ul>
+
+        <div class='clear-50'></div>
+
+        <p class='lead'>Included</p>
+
+
+        <b>Controllers</b>
+
+        <p>noCtrl - Exposes noToolbox's functionality to the view. <br /></p>
+
+        <b>Config</b>
+
+        <p>noPreserveQuery - Save query parameters in url when changing states. <br /></p>
+
+        <b>Directives</b>
+
+        <p>noAnimateToCenter - Animate any element to the center of the screen. <br />
+        noDraggable - Make any element draggable. <br />
+        noFireOnClick - Fire an angular function when an element is clicked. <br />
+        noFishEye - Enlarge an element as the mouse nears, creating a fisheye effect. <br />
+        noOnDoubleClick - Fire a function on double click. <br />
+        noOnKeyUp - Fire a function on key up. <br />
+        noOnResize - Fire a function when an element resizes. <br />
+        noPreventRightClick - Prevent right click events from propagation, including the menu. <br />
+        noResizable - Make any element resizable. <br />
+        noRightClickMenu - Create a right click menu. <br />
+        noSluggify - Sluggify text as the user types. <br />
+        noSubmitOnEnter - Fire a function when a user hits enter. <br /></p>
+
+        <b>Directives</b>
+
+        <p>noFormatFileSize - Format bytes, kilobytes, megabytes, gigabytes. <br /></p>
+
+        <b>Services</b>
+
+        <p>noErrorInterceptor - Intercept error responses, send push notifications. <br />
+        noEventEmitter - Event emitter ported to Angular. <br />
+        noLogger - Logger for Angular apps. <br />
+        noNotify - Push notifications. <br />
+        noQueue - Asynchronous call management. <br />
+        noResource - DRY resource manager. <br />
+        noSession - Session management. <br />
+        noSocket - Socket.io wrapper. <br /></p>
+
+        <div class='clear-50'></div>
+
+        <p class='lead'>Demos</p>
+
+        <b>Push Notifications</b>
+
+        <div class='clear-div'></div>
+
+        <button class='btn btn-success' ng-click='notify()'>
+          Push Notification
+        </button>
+
+        <button class='btn btn-warning' ng-click='notifyWarning()'>
+          Push Notification (WARNING)
+        </button>
+
+        <button class='btn btn-danger' ng-click='notifyDanger()'>
+          Push Notification (ERROR)
+        </button>
+
+        <div class='clear-50'></div>
+
+        <b>Console (Open developer's console to view)</b>
+
+        <div class='clear-div'></div>
+
+        <button class='btn btn-default' ng-click='logDebug()'>
+          Log (DEBUG) to console
+        </button>
+
+        <button class='btn btn-info' ng-click='logInfo()'>
+          Log (INFO) to console.
+        </button>
+
+        <button class='btn btn-warning' ng-click='logWarning()'>
+          Log (WARNING) to console.
+        </button>
+
+        <button class='btn btn-danger' ng-click='logError()'>
+          Log (ERROR) to console.
+        </button>
+
+        <div class='clear-50'></div>
+
+        <b>Queue</b>
+
+        <div class='clear-div'></div>
+
+        <button class='btn btn-primary' ng-click='pushQueue()'>
+          Asynchronous call
+        </button>
+
+        <div class='clear-50'></div>
+      </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../example/assets/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="../example/assets/vendor/browser-shim/shim.js"></script>
+    <script src="../example/assets/vendor/jquery/jquery.js"></script>
+    <script src="../example/assets/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../example/assets/vendor/angular/angular.js"></script>
+    <script src="../example/assets/vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../example/assets/vendor/angular-resource/angular-resource.js"></script>
+    <script src="../example/assets/vendor/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="../example/assets/vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="../dist/js/noToolbox.js"></script>
+
+    <script src="../example/assets/js/app.js"></script>
+  </body>
+</html>

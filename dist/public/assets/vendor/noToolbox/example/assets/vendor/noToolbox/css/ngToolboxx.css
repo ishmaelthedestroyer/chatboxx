@@ -1,0 +1,330 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+.clear-div,
+.clear-5,
+.clear-10,
+.clear-20,
+.clear-40,
+.clear-50,
+.clear-100 {
+  width: 100%;
+  height: 1px;
+  clear: both;
+}
+
+.clear-5 {
+  margin-bottom: 5px;
+}
+
+.clear-10 {
+  margin-bottom: 10px;
+}
+
+.clear-20 {
+  margin-bottom: 20px;
+}
+
+.clear-40 {
+  margin-bottom: 40px;
+}
+
+.clear-50 {
+  margin-bottom: 50px;
+}
+
+.clear-100 {
+  margin-bottom: 100px;
+}
+
+.bordered {
+  outline: 1px solid #333;
+}
+
+.box-shadow {
+    border: solid 1px #eee;
+    box-shadow: 0 0 3px #eee;
+    -moz-box-shadow: 0 0 3px #eee;
+    -webkit-box-shadow: 0 0 3px #eee;
+}
+.hover-shadow:hover {
+    border: solid 1px #333;
+    box-shadow: 2px 2px 3px #333;
+    -moz-box-shadow: 2px 2px 3px #333;
+    -webkit-box-shadow: 2px 2px 3px #333;
+    -webkit-transition: box-shadow 0.2s ease-in-out;
+    -moz-transition: box-shadow 0.2s ease-in-out;
+    -o-transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
+}
+.pad-10 {
+  padding: 10px;
+}
+
+.float {
+  float: left;
+  width: auto;
+  height: auto;
+}
+.wide {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+.tall {
+  height: 100% !important;
+  min-height: 100% !important;
+}
+.full-screen {
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.text-large {
+  font-size: 120%;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.text-black {
+  color: #333 !important;
+}
+
+.text-red {
+  color: #f00 !important;
+}
+.text-blue {
+  color: #4092F1 !important;
+}
+.text-orange {
+  color: #E74C3C !important;
+}
+.bg-orange {
+  background-color: #E74C3C !important;
+}
+.bg-white {
+    background-color: rgb(255, 255, 255) !important;
+}
+.bg-white-8 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+.bg-black-8 {
+  background-color: rgba(51, 51, 51, 0.8) !important;
+  background: rgba(51, 51, 51, 0.8) !important;
+}
+.navbar-brand.logo,
+.navbar-brand .logo {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  margin-right: 10px;
+  background-size: 100%;
+}
+
+.centered {
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.img-loading {
+  width: 75px;
+  height: 75px;
+  background-image: url(../img/loading.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 75px 75px;
+}
+
+.loading-large {
+  float: none;
+  width: 300px;
+  height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url('../img/loading-large.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 275px 275px;
+}
+
+.loading-container {
+  position: fixed;
+  top: 60px;
+  right: 100px;
+  z-index: 49999;
+  width: 100px;
+  height: 100px;
+  background-image: url('../img/loading-large.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80px 80px;
+}
+
+.notification-container {
+  position: fixed;
+  top: 60px;
+  right: 100px;
+  z-index: 50000;
+  width: 400px;
+  height: auto;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+.modal {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.full-screen {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(../fonts/ubuntu/_aijTyevf54tkVDLy-dlnD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(../fonts/ubuntu/_xyN3apAT_yRRDeqB3sPRg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(../fonts/ubuntu/0ihfXUL2emPh0ROJezvraD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Ubuntu Light Italic'), local('Ubuntu-LightItalic'), url(../fonts/ubuntu/DZ_YjBPqZ88vcZCcIXm6VobN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(../fonts/sourcesanspro/toadOcfmlt9b38dHJxOBGNbE_oMaV8t2eFeISPpzbdE.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(../fonts/sourcesanspro/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(../fonts/sourcesanspro/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Source Sans Pro Italic'), local('SourceSansPro-It'), url(../fonts/sourcesanspro/M2Jd71oPJhLKp0zdtTvoMzNrcjQuD0pTu1za2FULaMs.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Source Sans Pro Bold Italic'), local('SourceSansPro-BoldIt'), url(../fonts/sourcesanspro/fpTVHK8qsXbIeTHTrnQH6Nog-We9VNve39Jr4Vs_aDc.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(../fonts/lato/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Lato Hairline Italic'), local('Lato-HairlineItalic'), url(../fonts/lato/CggrdU0t5c42NcNxN-VM3_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(../fonts/lato/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(../fonts/lato/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(../fonts/lato/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(../fonts/lato/2HG_tEPiQ4Z6795cGfdivD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(../fonts/lato/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(../fonts/lato/HkF_qI1x_noxlxhrhMQYED8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
