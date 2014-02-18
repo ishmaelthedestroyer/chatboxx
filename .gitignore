@@ -5,11 +5,21 @@
 **/node_modules/**
 **/bower_components/**
 
+# env + ssl files
+./env/**
+./ssl/**
+!./env/README.md
+!./ssl/local/README.md
+!./ssl/production/README.md
+
 # logs
 ./npm_debug.log
 
 # build artifacts
 ./bin/*
+
+# final build
+./dist/**
 
 # deployment artifacts
 ./deploy/*
