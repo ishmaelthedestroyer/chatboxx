@@ -8,9 +8,9 @@
 # env + ssl files
 ./env/**
 ./ssl/**
-!./env/README.md
-!./ssl/local/README.md
-!./ssl/production/README.md
+!./config/env/README.md
+!./config/ssl/production/README.md
+!./config/ssl/development/README.md
 
 # logs
 ./npm_debug.log
