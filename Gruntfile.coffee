@@ -443,7 +443,6 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build:client', [
     'clean:client'
-    'clean:html'
 
     'coffeelint:client'
     'coffee:client'

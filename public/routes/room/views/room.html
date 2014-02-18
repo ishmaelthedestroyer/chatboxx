@@ -1,4 +1,4 @@
-<div class='container wide' data-ng-controller='RoomCtrl'>
+<div class='container full-screen' data-ng-controller='RoomCtrl'>
   <nav class="navbar navbar-fixed-top" role='navigation'>
       <div class="container wide" style='padding: 0 100px 0 100px;'>
           <div class="navbar-header">
@@ -41,9 +41,81 @@
       </div>
   </nav>
 
-  <div class='container' style='margin-top: -1px;'>
-    <div class='row'>
-      <h1>Room</h1>
+  <div class='clear-10'></div>
+
+  <div class='snap-drawers' data-ng-controller='ChatCtrl'>
+    <div class='snap-drawer snap-drawer-left' id='snap-sidebar'>
+
+      <ul class="nav nav-tabs nav-justified">
+        <li ng-class="{active: focus=='group'}" ng-click="changeFocus('group')" style="cursor:pointer;">
+          <a data-target="#conversation" data-toggle="tab">Group Chat</a>
+        </li>
+        <li ng-class="{active: focus==user.socket}" ng-repeat="user in users | filter:filterRoommates" ng-click="changeFocus(user.socket)" style="cursor:pointer;">
+          <a data-toggle="tab">{{user.name}}</a>
+        </li>
+      </ul>
+      <div class="clear-20">
+      </div>
+      <form class="row">
+        <div class="col-md-12">
+          <textarea class="form-control" placeholder="Say something..." rows="4" ng-model="message" bxsubmitonenter="chat()" ng-trim="ng-trim" ng-disabled="!connected"></textarea>
+        </div>
+        <div class="clear-10">
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <button class="form-control btn btn-default" ng-click="chat()" ng-disabled="!connected">
+      Send      </button>
+          </div>
+          <div class="col-sm-8 control-label">
+            <p>{{self.name}}</p>
+          </div>
+        </div>
+      </form>
+      <div class="clear-20">
+      </div>
+      <div class="float" style="overflow-y: auto; overflow-x: hidden; max-height: 500px; height: auto; width: 100%;">
+        <ul class='list-unstyled comments'>
+          <li data-ng-repeat="message in messages | orderBy: 'date':true | filter:chatFilter" id='message-{{message.id}}' class='comments-comment'>
+            <div class='comment-wrapper'>
+              <div class='comment-header'>
+                <span class='comment-text-author'>{{message.author}}</span>
+                <span class="comment-text-divider">&bull;</span>
+                <span class='comment-text-date'>{{message.date | date:'short'}}</span>
+            </div>
+            <div class='comment-body'>
+              <span class='comment-text-body'>{{message.body}}</span>
+            </div>
+          </li>
+        </ul>
+
+        <!--
+        <table class="table">
+          <tr id="message-{{message" class="id}}" ng-repeat="message in messages | orderBy: 'date':true | filter:filterChat">
+            <td width="25%">
+              <p>
+                <small>
+                  <span>{{message.name}}</span>
+                  <br />
+                  <span>{{message.date | date:'short'}}</span>
+                </small>
+              </p>
+            </td>
+            <td width="75%">
+              <p>{{message.message}}</p>
+            </td>
+          </tr>
+        </table>
+        -->
+        <div class="clear-5"></div>
+
+      </div>
+    </div>
+
+    <div class='snap-content' id='snap-content'>
+      <button class='btn btn-default rotate-90 bg-black-8 text-white' id='chat-btn'>
+        <i class='glyphicon glyphicon-chevron-right rotate-90'></i>&nbsp;&nbsp;&nbsp;Chat
+      </button>
     </div>
   </div>
 </div>

@@ -13,11 +13,11 @@
     "noToolbox": "latest"
   },
   "homepage": "https://github.com/ishmaelthedestroyer/noToolbox",
-  "_release": "fb32ee6f47",
+  "_release": "2a78c136e9",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "fb32ee6f47bbcba376b558ca11b89235afc3ed95"
+    "commit": "2a78c136e9541e9cc8f521708fca77661f28f42c"
   },
   "_source": "git://github.com/ishmaelthedestroyer/noToolbox.git",
   "_target": "*",

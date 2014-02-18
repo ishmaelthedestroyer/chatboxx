@@ -17,11 +17,11 @@ Server = (io) ->
 
   EventEmitter.call @
 
-  @io = io || null
-  @init()
-
   util.extend @, Logger
   util.inherits @, EventEmitter
+
+  @io = io || null
+  @init()
 
   return @
 

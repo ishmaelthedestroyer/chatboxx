@@ -9,6 +9,7 @@
     "angular-ui-router": "0.2.0",
     "modernizr": "~2.7.1",
     "es5-shim": "~2.3.0",
+    "snapjs": "latest",
     "browser-shim": "latest",
     "noToolbox": "latest"
   }
