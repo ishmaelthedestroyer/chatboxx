@@ -1,5 +1,5 @@
 # seriously? ignore git changes
-./.git/*
+.git/*
 
 # package control
 **/node_modules/**
@@ -17,14 +17,8 @@ config/ssl/**
 # logs
 npm_debug.log
 
-# build artifacts
-bin/*
-
 # final build
 dist/**
-
-# deployment artifacts
-deploy/*
 
 # os artifacts
 .DS_Store

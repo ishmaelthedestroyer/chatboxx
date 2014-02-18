@@ -1,18 +1,17 @@
 {
-  "name": "noSeed",
+  "name": "chatboxx",
   "version": "0.0.0",
-  "homepage": "http://no-seed.herokuapp.com",
+  "homepage": "https://www.chatboxx.io",
   "description": "Nomads MEAN seed.",
   "main": "app.js",
-  "repository": "github.com/ishmaelthedestroyer/noSeed",
+  "repository": "https://github.com/ishmaelthedestroyer/chatboxx",
   "keywords": [
     "angular",
-    "seed",
-    "mongo",
     "redis",
-    "express",
-    "angular",
-    "node"
+    "webRTC",
+    "peer",
+    "p2p",
+    "nomads"
   ],
   "licenses": [
     {
