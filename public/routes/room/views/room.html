@@ -1,5 +1,5 @@
 <div class='container full-screen' data-ng-controller='RoomCtrl'>
-  <nav class="navbar navbar-fixed-top" role='navigation'>
+  <nav class="navbar navbar-fixed-top" role='navigation' data-ng-controller='MediaCtrl'>
       <div class="container wide" style='padding: 0 100px 0 100px;'>
           <div class="navbar-header">
               <button class="navbar-toggle" data-target="#collapsable-nav" data-toggle="collapse" type="button">
@@ -19,9 +19,9 @@
 
             <ul class='nav navbar-nav navbar-right'>
               <li>
-                <button class="btn navbar-btn btn-primary" ng-if="streaming" ng-click="toggleStream()" ng-disabled="!connected || requestingStream" style="margin-right: 10px;">
+                <button class="btn navbar-btn btn-primary" ng-if="streamingCamera" ng-click="toggleCamera()" ng-disabled="!connected || requestingCamera" style="margin-right: 10px;">
                 Video - On</button>
-                <button class="btn navbar-btn btn-warning" ng-if="!streaming" ng-click="toggleStream()" ng-disabled="!connected || requestingStream" style="margin-right: 10px;">
+                <button class="btn navbar-btn btn-warning" ng-if="!streamingCamera" ng-click="toggleCamera()" ng-disabled="!connected || requestingCamera" style="margin-right: 10px;">
                 Video - Off</button>
               </li>
               <li>
@@ -31,9 +31,9 @@
                 Mute - Off</button>
               </li>
               <li>
-                <button class="btn navbar-btn btn-primary" ng-if="screenSharing" ng-click="toggleScreenShare()" ng-disabled="!connected || requestingDesktop">
+                <button class="btn navbar-btn btn-primary" ng-if="streamingScreen" ng-click="toggleScreen()" ng-disabled="!connected || requestingScreen">
                 Screen Share - On</button>
-                <button class="btn navbar-btn btn-warning" ng-if="!screenSharing" ng-click="toggleScreenShare()" ng-disabled="!connected || requestingDesktop">
+                <button class="btn navbar-btn btn-warning" ng-if="!streamingScreen" ng-click="toggleScreen()" ng-disabled="!connected || requestingScreen">
                 Screen Share - Off</button>
               </li>
             </ul>

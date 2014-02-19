@@ -5,9 +5,14 @@
 
 
 * app/controllers/socket.coffee
-[39 - low] # TODO: lowercase username only, sluggify
-[60 - low] # TODO: disconnect socket connection on error
-[110 - low] # TODO: ...
+[35 - low] # TODO: lowercase username only, sluggify
+[59 - low] # TODO: disconnect socket connection on error
+[85 - low] # TODO: validate message
+[108 - low] # TODO: filter name; verify `typeof string`, sluggify
+[179 - low] # TODO: handle error
+[198 - low] # TODO: handle err
+[218 - low] # TODO: handle err
+[228 - low] # TODO: handle err
 
 
 * public/assets/css/style.css

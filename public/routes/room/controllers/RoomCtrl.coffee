@@ -71,10 +71,7 @@ app.controller 'RoomCtrl', [
 
       # # # # # # # # # #
 
-      Util.safeApply $scope, () ->
-        $scope.connected = true
-
-      Logger.debug 'Connected?', $scope.connected
+      Util.safeApply $scope, () -> $scope.connected = true
 
       # # # # # # # # # #
 
@@ -95,14 +92,6 @@ app.controller 'RoomCtrl', [
       Socket.on 'rooms:error', (data) -> # room error
         Socket.close() # kill socket connection
         $state.go 'index' # redirect home
-
-      # # # # # # # # # #
-
-    apply = (scope, fn) ->
-      if scope.$$phase or scope.$root.$$phase
-        fn()
-      else
-        scope.$apply fn
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #

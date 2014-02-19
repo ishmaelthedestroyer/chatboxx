@@ -24,7 +24,6 @@ else
     Logger.debug 'Creating Redis (development) client.'
     return redis.createClient()
 
-
 # test + clean db
 rclient = createClient()
 require('../../lib/test-redis')

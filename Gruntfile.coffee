@@ -38,6 +38,9 @@ module.exports = (grunt) ->
         'app/models/*.*'
         'app/controllers/*.*'
         'config/**/*.*'
+        '!**/.git/**' # ignore git
+        '!.git/**'
+        '!.git'
       ]
       client: [
         'public/assets/js/app.*'
