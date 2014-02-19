@@ -2,15 +2,15 @@
   <div class="modal-content">
     <div class="modal-header">
       <button class="close" ng-click="close()" type="button">&times;</button>
-      <h4 class="modal-title">Preparing your room...</h4>
+      <h4 class="modal-title">{{modal.header}}</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="padding: 10px 10px 0 10px;">
 
       <form class="form-horizontal" role="form" ng-submit="submit()">
         <div class="form-group">
           <label class="col-sm-2 control-label" for="room-name">Room</label>
           <div class="col-sm-10">
-            <input id="room-name" class="form-control" type="text" value="{{room.name}}" ng-model="room.name" bxsluggify="updateURL()" />
+            <input id="room-name" class="form-control" type="text" value="{{room.name}}" ng-model="room.name" nosluggify="updateURL()" />
           </div>
         </div>
         <div class="form-group">
@@ -34,8 +34,7 @@
     </div>
     <div class="modal-footer">
       <button class="btn btn-default pull-left" type="button" ng-click="close()">Cancel</button>
-      <button class="btn btn-default pull-right" ng-show="!validName || !validEmail || !validMessage || working" disabled="true" type="submit">Submit</button>
-      <button class="btn btn-primary pull-right" ng-hide="!validName || !validEmail || !validMessage || working" ng-click="send()" type="submit">Submit</button>
+      <button class="btn btn-primary" ng-disabled='!valid || working' ng-click="submit()" type="submit">Enter</button>
     </div>
   </div>
 </div>

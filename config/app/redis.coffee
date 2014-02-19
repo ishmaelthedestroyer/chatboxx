@@ -29,6 +29,7 @@ else
 rclient = createClient()
 require('../../lib/test-redis')
   rclient: rclient
+rclient.flushdb() # NOTE: optional
 
 module.exports =
   redis: redis

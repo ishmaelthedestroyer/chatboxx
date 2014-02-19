@@ -1,12 +1,13 @@
 app.controller 'RoomCtrl', [
   '$scope', '$rootScope', '$state', '$stateParams', '$q', '$modal', '$location'
-  'noLogger', 'noSocket', 'noNotify', 'noSession', 'noQueue'
+  'noLogger', 'noSocket', 'noNotify', 'noSession', 'noQueue', 'noUtil'
   ($scope, $rootScope, $state, $stateParams, $q, $modal, $location
-  Logger, Socket, Notify, Session, Queue) ->
+  Logger, Socket, Notify, Session, Queue, Util) ->
     # go to home page if no room id
     return $state.go 'index' if !$stateParams.id
 
     $scope.self = {}
+    $scope.connected = false
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
@@ -64,9 +65,45 @@ app.controller 'RoomCtrl', [
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
 
+    # listeners
+    $rootScope.$on 'rooms:enter', (e, data) ->
+      Logger.debug 'Succesfully connected to room.'
+
+      # # # # # # # # # #
+
+      Util.safeApply $scope, () ->
+        $scope.connected = true
+
+      Logger.debug 'Connected?', $scope.connected
+
+      # # # # # # # # # #
+
+      Socket.on 'server', (data) -> # message from server
+        Notify.push data.message, 'warning', 4000
+
+      # # # # # # # # # #
+
+      $scope.$on '$destroy', () ->
+        Logger.debug 'Scope destroyed.'
+
+        Socket.removeAllListeners()
+        Socket.close()
+        Queue.clear()
+
+      # # # # # # # # # #
+
+      Socket.on 'rooms:error', (data) -> # room error
+        Socket.close() # kill socket connection
+        $state.go 'index' # redirect home
+
+      # # # # # # # # # #
+
     apply = (scope, fn) ->
       if scope.$$phase or scope.$root.$$phase
         fn()
       else
         scope.$apply fn
+
+    # # # # # # # # # # # # # # # # # # # #
+    # # # # # # # # # # # # # # # # # # # #
 ]

@@ -1,8 +1,8 @@
 var app = angular.module('App', ['ui.router', 'ui.bootstrap', 'noToolbox'])
 
 app.controller('AppCtrl', [
-  '$scope', '$state', '$q', 'noResource', 'noNotify', 'noQueue', 'noLogger',
-  function($scope, $state, $q, Resource, Notify, Queue, Logger) {
+  '$scope', '$state', '$q', 'noResource', 'noNotify', 'noQueue', 'noLogger', 'noUtil',
+  function($scope, $state, $q, Resource, Notify, Queue, Logger, Util) {
 
     $scope.notify = function() {
       Notify.push('This is a push notification.', 'success', 3000);
@@ -57,6 +57,12 @@ app.controller('AppCtrl', [
         deferred.resolve(true);
       }, 500);
     }
+
+    /* * * * * * * * * * * */
+
+    var unsafeString =  'a84#$%mLkasLM:Lk';
+    Logger.debug('Testing sluggify.', Util.sluggify(unsafeString));
+
   }
 ]);
 

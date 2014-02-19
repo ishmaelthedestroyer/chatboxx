@@ -1,15 +1,17 @@
 window.RoomPromptCtrl = [
-  '$scope', '$modalInstance', '$state', '$stateParams',
-  'noNotify', 'noLogger'
-  ($s, $m, $state, $stateParams,
-  Notify, Logger) ->
+  '$scope', '$rootScope', '$modalInstance', '$state',
+  '$stateParams', '$location'
+  'noNotify', 'noLogger', 'noUtil', 'noSocket'
+  ($s, $rootScope, $m, $state,
+  $stateParams, $location
+  Notify, Logger, Util, Socket) ->
 
     $s.valid = false
     $s.working = false
 
     $s.room =
       action: 'find'
-      name: sluggify $stateParams.id
+      name: Util.sluggify $stateParams.id
       password: ''
       confirm: ''
 
@@ -45,35 +47,23 @@ window.RoomPromptCtrl = [
 
     # event listener for room enter success / failure
     Socket.on 'rooms:enter', (data) ->
-      apply $s, () -> $s.working = false
+      Util.safeApply $s, () -> $s.working = false
 
       # Socket.on 'rooms:error', (data) ->
       # Socket.emit 'rooms:enter', $s.room
       if data.message.result == 'success'
-        Logger.debug 'Successfully entered the room.',
-          response: data
-
         $m.close() # close modal
 
-        apply $scope, () -> $scope.connected = true
-
-        # request video stream
-        $scope.toggleStream()
-
-        # TODO: handle successful response
-        deferred.resolve data
+        $rootScope.$broadcast 'rooms:enter', data
       else
         Logger.debug 'An error occured trying to enter the room.',
           response: data
 
         Notify.push data.message.message, 'danger', 4000
 
-        apply $s, () ->
+        Util.safeApply $s, () ->
           $s.room.password = ''
           $s.room.confirm = ''
-
-        # TODO: handle
-        # deferred.reject data
 
     $s.submit = () ->
       return false if $s.working || !$s.valid
@@ -84,7 +74,7 @@ window.RoomPromptCtrl = [
         password: $s.room.password
         confirm: $s.room.confirm
 
-      apply $s, () -> $s.working = true
+      Util.safeApply $s, () -> $s.working = true
 
       Socket.emit 'rooms:enter', $s.room
 
@@ -96,20 +86,11 @@ window.RoomPromptCtrl = [
     # # # # # # # # # #
 
     # check if password in URL
-    $s.room.password = $location.search().p || ''
+    $s.room.password = $location.search().p || $location.search().password || ''
 
     # if password in URL
     if $s.room.password.length
       $s.room.confirm = $s.room.password
       $s.valid = true
       $s.submit()
-
-    # check if password in url
-    Logger.debug 'Checking params.', $location.search()
-
-    apply = (scope, fn) ->
-      if scope.$$phase or scope.$root.$$phase
-        fn()
-      else
-        scope.$apply fn
 ]

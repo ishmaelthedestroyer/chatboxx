@@ -65,9 +65,10 @@
         <div class="form-group">
           <div class="col-sm-4">
             <button class="form-control btn btn-default" ng-click="chat()" ng-disabled="!connected">
-      Send      </button>
+              Send
+            </button>
           </div>
-          <div class="col-sm-8 control-label">
+          <div class="col-sm-8 control-label text-white">
             <p>{{self.name}}</p>
           </div>
         </div>
@@ -89,24 +90,6 @@
           </li>
         </ul>
 
-        <!--
-        <table class="table">
-          <tr id="message-{{message" class="id}}" ng-repeat="message in messages | orderBy: 'date':true | filter:filterChat">
-            <td width="25%">
-              <p>
-                <small>
-                  <span>{{message.name}}</span>
-                  <br />
-                  <span>{{message.date | date:'short'}}</span>
-                </small>
-              </p>
-            </td>
-            <td width="75%">
-              <p>{{message.message}}</p>
-            </td>
-          </tr>
-        </table>
-        -->
         <div class="clear-5"></div>
 
       </div>
