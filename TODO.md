@@ -16,7 +16,7 @@
 
 
 * public/assets/css/style.css
-[183 - low] TODO: port css to ngToolboxx
+[193 - low] TODO: port css to ngToolboxx
 
 
 -- END TASK LIST --

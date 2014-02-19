@@ -19,22 +19,19 @@
 
             <ul class='nav navbar-nav navbar-right'>
               <li>
-                <button class="btn navbar-btn btn-primary" ng-if="streamingCamera" ng-click="toggleCamera()" ng-disabled="!connected || requestingCamera" style="margin-right: 10px;">
-                Video - On</button>
-                <button class="btn navbar-btn btn-warning" ng-if="!streamingCamera" ng-click="toggleCamera()" ng-disabled="!connected || requestingCamera" style="margin-right: 10px;">
-                Video - Off</button>
+                <button class='btn navbar-btn' ng-class="{true:'btn-primary', false:'btn-warning'}[streamingCamera]" ng-disabled="!connected || requestingCamera" ng-click="toggleCamera()" style="margin-right: 10px;">
+                  Video - {{streamingCamera && 'ON' || 'OFF' }}
+                </button>
               </li>
               <li>
-                <button class="btn navbar-btn btn-primary" ng-if="muted" ng-click="toggleMute()" ng-disabled="!connected" style="margin-right: 10px;">
-                Mute - On</button>
-                <button class="btn navbar-btn btn-warning" ng-if="!muted" ng-click="toggleMute()" ng-disabled="!connected" style="margin-right: 10px;">
-                Mute - Off</button>
+                <button class='btn navbar-btn' ng-class="{true:'btn-primary', false:'btn-warning'}[muted]" ng-disabled="!connected" ng-click="toggleMute()" style="margin-right: 10px;">
+                  Mute - {{muted && 'ON' || 'OFF' }}
+                </button>
               </li>
               <li>
-                <button class="btn navbar-btn btn-primary" ng-if="streamingScreen" ng-click="toggleScreen()" ng-disabled="!connected || requestingScreen">
-                Screen Share - On</button>
-                <button class="btn navbar-btn btn-warning" ng-if="!streamingScreen" ng-click="toggleScreen()" ng-disabled="!connected || requestingScreen">
-                Screen Share - Off</button>
+                <button class='btn navbar-btn' ng-class="{true:'btn-primary', false:'btn-warning'}[streamingScreen]" ng-disabled="!connected || requestingScreen" ng-click="toggleScreen()">
+                  Screen Share - {{streamingScreen && 'ON' || 'OFF' }}
+                </button>
               </li>
             </ul>
           </div>
@@ -95,10 +92,15 @@
       </div>
     </div>
 
-    <div class='snap-content' id='snap-content'>
+    <div class='snap-content' id='snap-content' style='padding: 50px 350px 100px 100px;'>
       <button class='btn btn-default rotate-90 bg-black-8 text-white' id='chat-btn'>
         <i class='glyphicon glyphicon-chevron-right rotate-90'></i>&nbsp;&nbsp;&nbsp;Chat
       </button>
+
+      <div class='float stream-container' ng-repeat='stream in streams' style='width: 600px; height: 600px; background-color: #333;'>
+
+      </div>
+
     </div>
   </div>
 </div>

@@ -177,7 +177,17 @@ em {
   font-weight: 100 !important;
 }
 
+.stream-container {
+  margin: 0 10px 10px 10px;
+  padding: 2px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1000;
+}
 
+.stream {
+
+}
 
 /*
 TODO: port css to ngToolboxx

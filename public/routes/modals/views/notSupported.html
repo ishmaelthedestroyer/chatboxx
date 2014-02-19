@@ -1,0 +1,34 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="close" ng-click="close()" type="button">&times;</button>
+      <h4 class="modal-title">Uh-oh!</h4>
+    </div>
+    <div class="modal-body">
+      <p>It looks like we're unable to access your webcam / screen. Here's a quick trouble-shooting guide.
+      <ul>
+          <li>
+            Make sure you're on a <b>desktop or laptop</b> running the latest version of <b>Google Chrome</b>.
+          </li>
+          <li>
+            Currently, mobile devices and other browsers don't support WebRTC, the protocol we use for connecting you to your peers and stream media.</b>
+          </li>
+          <li>
+            A toolbar should pop up near the top of your screen when you click the <b>Video</b> or <b>Screen Share</b>
+            buttons. Make sure you click <b>Accept</b> so we can stream your media to peers.
+          </li>
+          <li>
+            Check the web address bar for the video icon. Click on it and make sure you've selected to share your media with this url.
+          </li>
+          <li>
+            <b>IMPORTANT: </b>If you are unable to <b>Screen Share</b>, open another tab in Google Chrome and enter <b>chrome://flags</b>
+            in the address bar. Find the item that says <b>Enable screen capture support in getUserMedia().</b> and enable it. You can quickly find this by using <b>CTRL + F</b> and searching for <b>getUserMedia</b>. Restart your browser afterwards.
+          </li>
+        </li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" ng-click="close()" type="button">Close</button>
+    </div>
+  </div>
+</div>

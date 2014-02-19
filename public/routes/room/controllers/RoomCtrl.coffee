@@ -8,6 +8,7 @@ app.controller 'RoomCtrl', [
 
     $scope.self = {}
     $scope.connected = false
+    $scope.streams = []
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
@@ -92,6 +93,26 @@ app.controller 'RoomCtrl', [
       Socket.on 'rooms:error', (data) -> # room error
         Socket.close() # kill socket connection
         $state.go 'index' # redirect home
+
+    # # # # # # # # # # # # # # # # # # # #
+    # # # # # # # # # # # # # # # # # # # #
+
+    $rootScope.$on 'stream:attach', (e, stream) ->
+      Logger.debug 'Attaching stream.', stream
+
+      Util.safeApply $scope, () ->
+        $scope.streams.push stream
+
+    # # # # # # # # # # # # # # # # # # # #
+    # # # # # # # # # # # # # # # # # # # #
+
+    $rootScope.$on 'stream:detach', (e, stream) ->
+      Logger.debug 'Detaching stream.', stream
+
+      for s in $scope.streams
+        if stream.user is s.user and stream.type is s.type
+          Util.safeApply $scope, () ->
+            $scope.streams.splice i, 1
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
