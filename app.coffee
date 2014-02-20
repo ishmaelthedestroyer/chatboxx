@@ -14,7 +14,7 @@ else
   process.env.NODE_ENV = 'development'
 
 # set secure (ssl)
-process.env.useSSL = true
+process.env.useSSL = 'true'
 
 # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # #
@@ -58,7 +58,7 @@ else # let workers handle jobs
 
   # # # # # # # # # #
 
-  if process.env.useSSL is true  # redirect insecure traffic
+  if process.env.useSSL is 'true'  # redirect insecure traffic
     app.all '*', (req, res, next) ->
       if process.env.NODE_ENV is 'development'
         if !req.secure
@@ -76,19 +76,31 @@ else # let workers handle jobs
   # bootstrap routes
   require('./config/app/routes') app
 
-  if process.env.NODE_ENV is 'development' and process.env.useSSL is true
-    Logger.debug 'useSSL: ' + process.env.useSSL
+  if process.env.NODE_ENV is 'development'
+    Logger.debug 'env is DEVELOPMENT', process.env.NODE_ENV
+  else
+    Logger.debug 'env is PRODUCTION', process.env.NODE_ENV
+
+  if process.env.useSSL is 'true'
+    Logger.debug 'env is SECURE', process.env.useSSL
+  else
+    Logger.debug 'env is INSECURE', process.env.useSSL
+
+
+  if process.env.NODE_ENV is 'development' and process.env.useSSL is 'true'
+    Logger.debug 'Initializing secure ssl server.'
     path = require 'path'
     fs = require 'fs'
     options =
       key: fs.readFileSync path.resolve __dirname +
-        '/config/ssl/local/localhost.pem'
+        '/config/ssl/development/localhost.pem'
       cert: fs.readFileSync path.resolve __dirname +
-        '/config/ssl/local/certificate.pem'
+        '/config/ssl/development/certificate.pem'
 
     # create server, bootstrap socket.io
     server = require('https').createServer options, app
   else
+    Logger.debug 'Creating regular http (non-secure) server.'
     server = require('http').createServer app
 
   # # # # # # # # # # # # # # # # # # # #

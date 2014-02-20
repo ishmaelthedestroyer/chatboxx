@@ -179,5 +179,7 @@ app.directive 'resizecluster', ($window) ->
     resizeFn null, element[0] # fire on initializiation
     resizeFn null, s for s in getSiblings() # resize all siblings
 
+    scope.$on 'resizeCluster', (e) ->
+      resizeFn null, element[0]
 
     angular.element($window).bind 'resize', resizeFn # bind to window resize

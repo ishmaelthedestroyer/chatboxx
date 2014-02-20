@@ -18,6 +18,9 @@ app.controller 'MediaCtrl', [
     n.getUserMedia = n.getUserMedia || n.webkitGetUserMedia ||
       n.mozGetUserMedia || n.msGetUserMedia
 
+    $rootScope.$on 'initialize', () ->
+      $scope.toggleCamera() # get camera on initialization
+
     checkSupport = () ->
       Logger.debug 'Checking support....'
 

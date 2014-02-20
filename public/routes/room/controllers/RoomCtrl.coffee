@@ -11,6 +11,7 @@ app.controller 'RoomCtrl', [
     $scope.self = {}
     $scope.connected = false
     $scope.streams = []
+    $scope.users = []
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
@@ -70,6 +71,7 @@ app.controller 'RoomCtrl', [
 
     # listeners
     $rootScope.$on 'rooms:enter', (e, data) ->
+      $rootScope.$broadcast 'initialize' # tell other controllers to initialize
       Logger.debug 'Succesfully connected to room.'
 
       # # # # # # # # # #
@@ -89,6 +91,24 @@ app.controller 'RoomCtrl', [
         Socket.removeAllListeners()
         Socket.close()
         Queue.clear()
+
+      # # # # # # # # # #
+
+      Socket.on 'users:self', (data) -> # info on socket
+        $scope.self = data.message
+
+      # # # # # # # # # #
+
+      Socket.on 'users:update', (data) -> # update user info
+        for user, i in $scope.users when user.socket is data.message.socket
+          return $scope.users[i] = x
+
+      # # # # # # # # # #
+
+      Socket.on 'users:all', (data) -> # update all roommates
+        $scope.users = []
+        for user in data.message when user not in $scope.users
+          $scope.users.push user
 
       # # # # # # # # # #
 
@@ -118,6 +138,8 @@ app.controller 'RoomCtrl', [
           Util.safeApply $scope, () ->
             $scope.streams.splice i, 1
 
+      $scope.$broadcast 'resizeCluster'
+
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
 
@@ -131,6 +153,10 @@ app.controller 'RoomCtrl', [
     # # # # # # # # # # # # # # # # # # # #
 
     # helper functions
+
+    $scope.getName = (id) -> # get username from id
+      for user in $scope.users
+        return user.name if user.socket is id
 
     $scope.checkMuted = (stream) -> # trust url for interpolation
       return true if MUTED
