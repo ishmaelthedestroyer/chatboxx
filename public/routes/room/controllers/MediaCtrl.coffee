@@ -1,8 +1,8 @@
 app.controller 'MediaCtrl', [
   '$scope', '$rootScope', '$modal', '$state', '$q',
-  'noLogger', 'noSocket', 'noQueue'
+  'noLogger', 'noSocket', 'noQueue', 'noNotify', 'RTC'
   ($scope, $rootScope, $modal, $state, $q,
-  Logger, Socket, Queue) ->
+  Logger, Socket, Queue, Notify, RTC) ->
     $scope.requestingCamera = false
     $scope.requestingScreen = false
 
@@ -19,7 +19,31 @@ app.controller 'MediaCtrl', [
       n.mozGetUserMedia || n.msGetUserMedia
 
     $rootScope.$on 'initialize', () ->
-      $scope.toggleCamera() # get camera on initialization
+      # $scope.toggleCamera() # get camera on initialization
+
+      Socket.on 'users:enter', (data) ->  # user entered room
+        Notify.push 'A user has entered the room.', 'success', 4000
+        RTC.call data.message, 'camera' # if $scope.streamingCamera
+        RTC.call data.message, 'screen' # if $scope.streamingScreen
+
+      # # # # # # # # # #
+
+      Socket.on 'users:exit', (data) -> # user left the room
+        Logger.debug 'A user left the room.', data
+        Notify.push 'A user has left the room.', 'danger', 4000
+
+        RTC.hangup data.message, 'camera', false
+        RTC.hangup data.message, 'screen', false
+
+    # # # # # # # # # #
+
+    $rootScope.$on 'RTC:addstream', (e, data) ->
+      Logger.debug 'MediaCtrl got request to attach stream from RTC.'
+      attachStream data.src, data.user, data.type
+
+    $rootScope.$on 'RTC:removestream', (e, data) ->
+      Logger.debug 'MediaCtrl got request to detach stream from RTC.'
+      detachStream data.user, data.type
 
     checkSupport = () ->
       Logger.debug 'Checking support....'
@@ -84,6 +108,7 @@ app.controller 'MediaCtrl', [
           window.streamCamera = stream
           mute() if $scope.muted
 
+          RTC.refresh stream, 'camera' # add stream to RTC
           attachStream stream, null, 'camera'
         , (err) -> # error callback
           return alertNotSupported()
@@ -94,6 +119,8 @@ app.controller 'MediaCtrl', [
         streamCamera.mozSrcObject.stop() if streamCamera.mozSrcObject
         streamCamera = null
         $scope.streamingCamera = false
+
+        RTC.refresh null, 'camera'
         detachStream null, 'camera'
 
     $scope.toggleScreen = () ->
@@ -123,6 +150,7 @@ app.controller 'MediaCtrl', [
           streamScreen = stream
           window.streamScreen = stream
 
+          RTC.refresh stream, 'screen' # add stream to RTC
           attachStream stream, null, 'screen'
         , (err) -> # error callback
           return alertNotSupported()
@@ -133,6 +161,8 @@ app.controller 'MediaCtrl', [
         streamScreen.mozSrcObject.stop() if streamScreen.mozSrcObject
         streamScreen = null
         $scope.streamingScreen = false
+
+        RTC.refresh null, 'screen'
         detachStream null, 'screen'
 
     $scope.toggleMute = () ->
@@ -140,9 +170,9 @@ app.controller 'MediaCtrl', [
       $rootScope.$broadcast 'mute', $scope.muted
 
       if $scope.muted
-        unMute() if streamCamera
+        unMute() if streamingCamera
       else
-        mute() if streamCamera
+        mute() if streamingCamera
 
     mute = () ->
       tracks = streamCamera.getAudioTracks()

@@ -1,6 +1,6 @@
 app.controller 'ChatCtrl', [
-  '$scope', '$rootScope', '$state', 'noLogger', 'noSocket', 'noUtil'
-  ($scope, $rootScope, $state, Logger, Socket, Util) ->
+  '$scope', '$rootScope', '$state', 'noLogger', 'noSocket', 'RTC', 'noUtil'
+  ($scope, $rootScope, $state, Logger, Socket, RTC, Util) ->
     $scope.focus = 'GROUP'
     $scope.messages = []
     $scope.message = ''

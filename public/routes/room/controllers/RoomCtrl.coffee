@@ -1,10 +1,10 @@
 app.controller 'RoomCtrl', [
   '$scope', '$rootScope', '$state', '$stateParams', '$q',
   '$modal', '$location', '$sce'
-  'noLogger', 'noSocket', 'noNotify', 'noSession', 'noQueue', 'noUtil'
+  'noLogger', 'noSocket', 'noNotify', 'noSession', 'noQueue', 'RTC', 'noUtil'
   ($scope, $rootScope, $state, $stateParams, $q,
   $modal, $location, $sce
-  Logger, Socket, Notify, Session, Queue, Util) ->
+  Logger, Socket, Notify, Session, Queue, RTC, Util) ->
     # go to home page if no room id
     return $state.go 'index' if !$stateParams.id
 
@@ -52,6 +52,7 @@ app.controller 'RoomCtrl', [
       .then (data) ->
         deferred.resolve true # resolve promise, remove loader icon
         $scope.self = data.message # info on socket returned from server
+        RTC.setSocket $scope.self.socket # set socket id in RTC controller
 
         # prompt for room + password
         modal = do -> $modal.open
@@ -96,12 +97,13 @@ app.controller 'RoomCtrl', [
 
       Socket.on 'users:self', (data) -> # info on socket
         $scope.self = data.message
+        RTC.setSocket $scope.self.socket # set socket id in RTC controller
 
       # # # # # # # # # #
 
       Socket.on 'users:update', (data) -> # update user info
         for user, i in $scope.users when user.socket is data.message.socket
-          return $scope.users[i] = x
+          return $scope.users[i] = data.message
 
       # # # # # # # # # #
 
@@ -109,6 +111,26 @@ app.controller 'RoomCtrl', [
         $scope.users = []
         for user in data.message when user not in $scope.users
           $scope.users.push user
+
+        RTC.updateUsers $scope.users
+
+      # # # # # # # # # #
+
+      ###
+      Socket.on 'users:enter', (data) ->  # user entered room
+        Notify.push 'A user has entered the room.', 'success', 4000
+        RTC.call data.message, 'camera' # call the user, share cams
+        RTC.call data.message, 'screen' # call the user, share cams
+
+      # # # # # # # # # #
+
+      Socket.on 'users:exit', (data) -> # user left the room
+        Logger.debug 'A user left the room.', data
+        Notify.push 'A user has left the room.', 'danger', 4000
+
+        RTC.hangup data.message, 'camera', false
+        RTC.hangup data.message, 'screen', false
+      ###
 
       # # # # # # # # # #
 
@@ -154,6 +176,24 @@ app.controller 'RoomCtrl', [
 
     # helper functions
 
+    # update name
+    $scope.update = {}
+    $scope.update.name = ''
+    $scope.updateName = () ->
+      return false if $scope.update.name is ''
+      return false if $scope.update.name is $scope.self.name
+
+      Logger.debug 'Updating name.',
+        old: $scope.self.name
+        updated: $scope.update.name
+
+      # notify server
+      Socket.emit 'users:update', $scope.update.name
+
+      # clear update object name key
+      Util.safeApply $scope, () ->
+        $scope.update.name = ''
+
     $scope.getName = (id) -> # get username from id
       for user in $scope.users
         return user.name if user.socket is id
@@ -165,6 +205,5 @@ app.controller 'RoomCtrl', [
       return false
 
     $scope.trustSrc = (src) -> # trust url for interpolation
-      Logger.debug '$scope.trustSrc got src.', src
       return $sce.trustAsResourceUrl src
 ]

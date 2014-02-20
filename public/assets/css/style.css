@@ -105,6 +105,12 @@ em {
   left: -40px;
   top: 100px;
   z-index: 1000px;
+  font-size: 14pt;
+  color: #F0AD4E !important;
+}
+
+#chat-btn:hover {
+  color: #fff !important;
 }
 
 .comment-text-divider {

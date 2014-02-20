@@ -15,8 +15,12 @@
 [228 - low] # TODO: handle err
 
 
+* public/routes/room/controllers/RTC.coffee
+[63 - low] # TODO: notify of error
+
+
 * public/assets/css/style.css
-[193 - low] TODO: port css to ngToolboxx
+[199 - low] TODO: port css to ngToolboxx
 
 
 -- END TASK LIST --

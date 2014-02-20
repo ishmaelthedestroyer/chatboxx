@@ -43,6 +43,25 @@
   <div class='snap-drawers' data-ng-controller='ChatCtrl'>
     <div class='snap-drawer snap-drawer-left' id='snap-sidebar'>
 
+      <div class="form-horizontal row">
+        <div class="form-group">
+          <div class="col-xs-3 control-label">
+            <p class="text-center text-white">Username</p>
+          </div>
+          <div class="col-xs-8">
+            <div class="input-group">
+              <input class="form-control" placeholder="{{self.name}}" ng-model="update.name" nosubmitonenter="updateName()" nosluggify="nosluggify" maxlength='30' />
+              <span class="input-group-btn">
+                <button class="form-control btn" ng-class="{true:'btn-warning', false:'btn-primary'}[update.name.length > 0]" ng-disabled="!connected" ng-click="updateName()">
+                  <span ng-show='!update.name.length'>&#x2713;</span>
+                  <span ng-show='update.name.length' class="glyphicon glyphicon-repeat"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <ul class="nav nav-tabs nav-justified">
         <li ng-class="{active: focus=='group'}" ng-click="changeFocus('group')" style="cursor:pointer;">
           <a data-target="#conversation" data-toggle="tab">Group Chat</a>
