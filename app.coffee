@@ -14,10 +14,7 @@ else
   process.env.NODE_ENV = 'development'
 
 # set secure (ssl)
-if argv.useSSL? && argv.useSSL is 'true'
-  process.env.useSSL = true
-else
-  process.env.useSSL = false
+process.env.useSSL = true
 
 # # # # # # # # # # # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # # #
