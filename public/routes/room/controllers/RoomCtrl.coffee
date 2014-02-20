@@ -1,7 +1,9 @@
 app.controller 'RoomCtrl', [
-  '$scope', '$rootScope', '$state', '$stateParams', '$q', '$modal', '$location'
+  '$scope', '$rootScope', '$state', '$stateParams', '$q',
+  '$modal', '$location', '$sce'
   'noLogger', 'noSocket', 'noNotify', 'noSession', 'noQueue', 'noUtil'
-  ($scope, $rootScope, $state, $stateParams, $q, $modal, $location
+  ($scope, $rootScope, $state, $stateParams, $q,
+  $modal, $location, $sce
   Logger, Socket, Notify, Session, Queue, Util) ->
     # go to home page if no room id
     return $state.go 'index' if !$stateParams.id
@@ -99,6 +101,7 @@ app.controller 'RoomCtrl', [
 
     $rootScope.$on 'stream:attach', (e, stream) ->
       Logger.debug 'Attaching stream.', stream
+      stream.user = $scope.self.socket if !stream.user
 
       Util.safeApply $scope, () ->
         $scope.streams.push stream
@@ -108,12 +111,34 @@ app.controller 'RoomCtrl', [
 
     $rootScope.$on 'stream:detach', (e, stream) ->
       Logger.debug 'Detaching stream.', stream
+      stream.user = $scope.self.socket if !stream.user
 
-      for s in $scope.streams
+      for s, i in $scope.streams
         if stream.user is s.user and stream.type is s.type
           Util.safeApply $scope, () ->
             $scope.streams.splice i, 1
 
     # # # # # # # # # # # # # # # # # # # #
     # # # # # # # # # # # # # # # # # # # #
+
+    MUTED = false
+
+    $rootScope.$on 'mute', (e, val) ->
+      MUTED = val
+      stream.muted = MUTED for stream in $scope.streams
+
+    # # # # # # # # # # # # # # # # # # # #
+    # # # # # # # # # # # # # # # # # # # #
+
+    # helper functions
+
+    $scope.checkMuted = (stream) -> # trust url for interpolation
+      return true if MUTED
+      return true if stream.muted
+      return true if stream.user is $scope.self.socket
+      return false
+
+    $scope.trustSrc = (src) -> # trust url for interpolation
+      Logger.debug '$scope.trustSrc got src.', src
+      return $sce.trustAsResourceUrl src
 ]

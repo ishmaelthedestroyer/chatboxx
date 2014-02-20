@@ -97,8 +97,9 @@
         <i class='glyphicon glyphicon-chevron-right rotate-90'></i>&nbsp;&nbsp;&nbsp;Chat
       </button>
 
-      <div class='float stream-container' ng-repeat='stream in streams' style='width: 600px; height: 600px; background-color: #333;'>
-
+      <div class='float stream-container' ng-repeat='stream in streams' style='width: 600px; height: 600px; background-color: #333;' resizeCluster>
+        <video ng-if='checkMuted(stream)' ng-src='{{trustSrc(stream.src)}}' muted='true' autoplay='true' style='width: 100%; height: 100%;'></video>
+        <video ng-if='!checkMuted(stream)' ng-src='{{trustSrc(stream.src)}}' autoplay='true' style='width: 100%; height: 100%;'></video>
       </div>
 
     </div>
