@@ -128,7 +128,6 @@ em {
   display: block;
   overflow: hidden;
   padding: 0 0 8px 0;
-  margin: 0 0 0 8px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -140,10 +139,8 @@ em {
   content: "";
   position: absolute;
   top: 15px;
-  left: 3px;
   width: 10px;
   height: 10px;
-  border-width: 0 0 1px 1px;
   border-style: solid;
   border-color: #e5e5e5;
   background: #fff;
@@ -152,6 +149,41 @@ em {
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
 }
+
+
+.comments .comments-comment.comment-other {
+  margin-right: 40px;
+}
+
+.comments-comment.comment-other .comment-wrapper{
+  margin: 0 0 0 8px;
+}
+
+.comments-comment.comment-other .comment-wrapper:before {
+  left: 3px;
+  border-width: 0 0 1px 1px;
+}
+
+
+.comments .comments-comment.comment-self {
+  margin-left: 40px;
+  margin-right: 0;
+}
+
+.comments-comment.comment-self .comment-wrapper{
+  margin: 0 8px 0 0;
+}
+
+.comments-comment.comment-self .comment-wrapper:before {
+  right: 3px;
+  border-width: 1px 1px 0 0;
+}
+
+
+
+
+
+
 
 .comments-comment .comment-header {
   width: 100%;

@@ -95,7 +95,7 @@
       </div>
       <div class="float" style="overflow-y: auto; overflow-x: hidden; max-height: 500px; height: auto; width: 100%;">
         <ul class='list-unstyled comments'>
-          <li data-ng-repeat="message in messages | orderBy: 'date':true | filter:chatFilter" class='comments-comment'>
+          <li data-ng-repeat="message in messages | orderBy: 'date':true | filter:chatFilter" class='comments-comment' ng-class="{true:'comment-self', false:'comment-other'}[message.from == self.socket]">
             <div class='comment-wrapper'>
               <div class='comment-header'>
                 <span class='comment-text-author'>{{getName(message.from)}}</span>
