@@ -62,18 +62,17 @@
         </div>
       </div>
 
+      <!--
       <ul class="nav nav-tabs nav-justified">
         <li ng-class="{active: focus=='group'}" ng-click="changeFocus('group')" style="cursor:pointer;">
           <a data-target="#conversation" data-toggle="tab">Group Chat</a>
         </li>
-        <!--
         <li ng-class="{active: focus==user.socket}" ng-repeat="user in users | filter:filterRoommates" ng-click="changeFocus(user.socket)" style="cursor:pointer;">
           <a data-toggle="tab">{{user.name}}</a>
         </li>
-        -->
       </ul>
-      <div class="clear-20">
-      </div>
+      -->
+      <div class="clear-20"></div>
       <form class="row">
         <div class="col-md-12">
           <textarea class="form-control" placeholder="Say something..." rows="4" ng-model="message" nosubmitonenter="chat()" ng-trim="ng-trim" ng-disabled="!connected"></textarea>
@@ -81,10 +80,7 @@
         <div class="clear-10">
         </div>
         <div class="form-group">
-          <div class="col-sm-8 control-label text-white">
-            <p>{{self.name}}</p>
-          </div>
-          <div class="col-sm-4">
+          <div class="col-xs-4 col-xs-offset-8">
             <button class="form-control btn btn-default" ng-click="chat()" ng-disabled="!connected">
               Send
             </button>
