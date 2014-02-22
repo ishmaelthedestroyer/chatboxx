@@ -18,7 +18,10 @@ config/ssl/**
 npm_debug.log
 
 # final build
+heroku/**
 dist/**
+**/heroku/**
+**/dist/**
 
 # os artifacts
 .DS_Store

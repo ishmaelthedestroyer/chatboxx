@@ -40,3 +40,4 @@ angular.module('noResizable', [])
       event.preventDefault()
       event.stopPropagation()
       $document.on 'mousemove', mousemove
+      $document.on 'mouseup', mouseup

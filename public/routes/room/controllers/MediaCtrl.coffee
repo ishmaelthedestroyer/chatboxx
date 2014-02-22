@@ -19,7 +19,7 @@ app.controller 'MediaCtrl', [
       n.mozGetUserMedia || n.msGetUserMedia
 
     $rootScope.$on 'initialize', () ->
-      # $scope.toggleCamera() # get camera on initialization
+      $scope.toggleCamera() # get camera on initialization
 
       Socket.on 'users:enter', (data) ->  # user entered room
         Notify.push 'A user has entered the room.', 'success', 4000

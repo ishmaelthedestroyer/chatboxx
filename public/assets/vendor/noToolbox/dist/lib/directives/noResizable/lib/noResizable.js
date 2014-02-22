@@ -39,7 +39,8 @@ angular.module('noResizable', []).directive('noresizable', function($document, $
     return resize.onmousedown = function(event) {
       event.preventDefault();
       event.stopPropagation();
-      return $document.on('mousemove', mousemove);
+      $document.on('mousemove', mousemove);
+      return $document.on('mouseup', mouseup);
     };
   };
 });

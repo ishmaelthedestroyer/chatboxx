@@ -2,13 +2,18 @@ angular.module('noDraggable', [])
 
 .directive 'nodraggable', ($document) ->
   (scope, element, attr) ->
-    startX = 0
-    startY = 0
+    startX = event.screenX - element.offset().left
+    startY = event.screenY - element.offset().top
     x = 0
     y = 0
 
     element.css
+      position: 'absolute'
       cursor: 'pointer'
+      left: startX + 'px'
+      top: startY + 'px'
+
+    element.parent()[0].setAttribute 'position', 'relative'
 
     mousemove = (event) ->
       y = event.screenY - startY

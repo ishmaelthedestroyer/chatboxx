@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.2.14-build.2281+sha.a3f7017
+ * @license AngularJS v1.2.14-build.2299+sha.84ad0a0
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -58,7 +58,6 @@ function shallowClearAndCopy(src, dst) {
  * The `ngResource` module provides interaction support with RESTful services
  * via the $resource service.
  *
- * {@installModule resource}
  *
  * <div doc-module-components="ngResource"></div>
  *

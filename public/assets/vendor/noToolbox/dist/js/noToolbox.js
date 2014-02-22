@@ -29,13 +29,17 @@ angular.module('noAnimateToCenter', []).directive('noanimatetocenter', function(
 angular.module('noDraggable', []).directive('nodraggable', function($document) {
   return function(scope, element, attr) {
     var mousemove, mouseup, startX, startY, x, y;
-    startX = 0;
-    startY = 0;
+    startX = event.screenX - element.offset().left;
+    startY = event.screenY - element.offset().top;
     x = 0;
     y = 0;
     element.css({
-      cursor: 'pointer'
+      position: 'absolute',
+      cursor: 'pointer',
+      left: startX + 'px',
+      top: startY + 'px'
     });
+    element.parent()[0].setAttribute('position', 'relative');
     mousemove = function(event) {
       y = event.screenY - startY;
       x = event.screenX - startX;
@@ -224,7 +228,8 @@ angular.module('noResizable', []).directive('noresizable', function($document, $
     return resize.onmousedown = function(event) {
       event.preventDefault();
       event.stopPropagation();
-      return $document.on('mousemove', mousemove);
+      $document.on('mousemove', mousemove);
+      return $document.on('mouseup', mouseup);
     };
   };
 });
