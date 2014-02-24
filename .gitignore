@@ -18,9 +18,11 @@ config/ssl/**
 npm_debug.log
 
 # final build
+heroku
 heroku/**
-dist/**
 **/heroku/**
+dist
+dist/**
 **/dist/**
 
 # os artifacts
